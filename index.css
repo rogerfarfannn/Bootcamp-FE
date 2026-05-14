@@ -1,0 +1,24 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    
+}
+.navbar{
+    background-color: cadetblue;
+    display: flex;
+    flex-grow: 1;
+    padding: 23px;
+}
+.card{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+   
+}
+.side-menu{
+    background-color: cadetblue;
+    
+}
+.items-container{
+    background-color: rgb(206, 253, 255);
+    
+}
