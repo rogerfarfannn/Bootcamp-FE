@@ -14,6 +14,12 @@ import {MOCK_RECIPES} from "./mock-recipes";
       <p>Description: {{recipe().description}}</p>
 
     </div>
+    <hr/>
+    <div>
+      <p>Servings: {{servings()}}</p>
+    <button (click)="ChangeServings(-1)" >-</button>
+    <button (click)="ChangeServings(1)" >+</button>
+    </div>
     <router-outlet />
 
   `,
@@ -43,4 +49,11 @@ export class App {
     //console.log(this.index);
     this.recipe.set(MOCK_RECIPES[this.index]);
   }
+    //Module 5:
+    servings = signal(1);
+    protected ChangeServings (numb : number){
+      this.servings.update( prev => {
+       return  Math.max(prev+numb, 0);
+      });
+    }
 }
