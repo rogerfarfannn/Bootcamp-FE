@@ -4,7 +4,7 @@
   </div>
   <div [class]="isReduced()?'main-grid-reduced':'main-grid'" >
     <div class="side-menu">
-      <button  class="reduce-btn"
+      <button  class="reduce-btn" [hidden]="user.role!='admin'"
       (click)="isReduced.update(x=> !x)"
       >Reduce</button>
     </div>

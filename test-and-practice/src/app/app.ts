@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,6 @@ export class App {
   changeReducedStatus = () =>{
     this.isReduced.update(x=> !x);
   }
+
+  user: User = {id: "123", role: "user", name: "Pepe"};
 }
