@@ -4,23 +4,37 @@
     height: 100dvh;
 }
 
-.nav-bar-addition{
+.nav-bar-addition {
     background-color: rgb(2, 204, 29);
     flex-grow: 1;
 }
-.main {
+
+
+
+.main-grid {
     display: grid;
     grid-template-columns: 1fr 5fr;
     flex-grow: 8;
     transition: 100ms;
 }
 
-
-.main-reduced {
+.main-grid-reduced {
     display: grid;
     grid-template-columns: 0.3fr 5fr;
     flex-grow: 8;
     transition: 100ms;
+}
+
+@media (max-width: 768px) {
+    .main-grid {
+        display: grid;
+        grid-template-columns: 0fr 5fr;
+        flex-grow: 8;
+        transition: 100ms;
+    }
+    .reduce-btn {
+        display: none;
+    }
 }
 
 .side-menu {
@@ -36,6 +50,7 @@
     background-color: rgb(11, 117, 122);
     flex-grow: 1;
 }
+
 .navbar-second {
     background-color: rgb(173, 194, 20);
     flex-grow: 1;
