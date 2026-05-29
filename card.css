@@ -95,5 +95,7 @@ body {
 .second-footer-content {
     border: 3px solid rgb(21, 63, 134);
     flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
