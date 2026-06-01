@@ -7,14 +7,29 @@ import { RecipeDetail } from '../recipe-detail/recipe-detail';
   selector: 'app-recipe-list',
   imports: [RecipeDetail],
   template: `
-    <button (click)="switchRecipeShown('back')" >Back</button>
-    <button (click)="switchRecipeShown('forward')" >Forward</button>
-    <app-recipe-detail [recipe]="recipe()">
+  <div class="main-container">
+    <div class="btn-container">
+       <button (click)="switchRecipeShown('back')" >Back</button>
+       <button (click)="switchRecipeShown('forward')" >Forward</button>
+    </div>
+    <app-recipe-detail [recipe]="recipe()"/>
+  </div>
     `,
-  styles: ``,
+  styles: `
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  `,
 })
 export class RecipeList {
-  
+
   /*protected clickLogButton = (text: string) =>{
     console.log(text);
   }*/
@@ -36,5 +51,5 @@ export class RecipeList {
     //console.log(this.index);
     this.recipe.set(MOCK_RECIPES[this.index]);
   }
-  
+
 }
