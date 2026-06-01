@@ -12,19 +12,21 @@ import { MOCK_RECIPES } from "./mock-recipes";
     <div>
       <p>Name: {{recipe().name}}</p>
       <p>Description: {{recipe().description}}</p>
-
     </div>
     <hr/>
     <div>
       <p>Servings: {{servings()}}</p>
     <button (click)="ChangeServings(-1)" >-</button>
     <button (click)="ChangeServings(1)" >+</button>
+    <p>Image:</p>
+    <img [src]="recipe().imgUrl">
     </div>
 
     <!--Module 6-->
     @for (item of adjustedIngredients(); track $index) {
       <p>{{item.name}} - {{item.quantity}} - {{item.unit}}</p>
     }
+
     <router-outlet />
 
   `,
