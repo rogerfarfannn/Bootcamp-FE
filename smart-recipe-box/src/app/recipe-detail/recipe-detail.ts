@@ -20,9 +20,11 @@ import { Ingredient, RecipeModel } from '../models';
             <p>Ingredients:</p>
             <!--Module 6-->
             <ol>
-               @for (item of adjustedIngredients(); track $index) {
-            <li>{{item.name}} - {{item.quantity}} {{item.unit}}</li>
-          }
+               @for (item of adjustedIngredients(); track item.name) {
+                <li>{{item.name}} - {{item.quantity}} {{item.unit}}</li>
+              } @empty {
+                <li>No ingredients found</li>
+              }
             </ol>
          
           </div>
