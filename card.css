@@ -1,21 +1,19 @@
 html,
 body {
-    height: 100vh;
+    height: 100dvh;
     margin: 0;
 }
 
 body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    /*display: flex*/
+   /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr;*/
+    display: flex
 }
-
 
 .first-container {
     display: flex;
     grid-column: 2;
     flex:1
-
 }
 
 
@@ -45,21 +43,19 @@ body {
 
 .my-header {
     border: 3px solid rgb(25, 196, 107);
-    flex-grow: 0.4;
+    flex-grow: 0.3;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
     .header-icon{
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
     }
-    .my-tittle{
-    }
+   
 
 .my-subheader {
     border: 3px solid rgb(25, 196, 107);
-    flex-grow: 0.3;
+    flex-grow: 0.2;
     margin: 0 0.8rem;
     display: flex;
 
@@ -75,12 +71,11 @@ body {
     align-items: stretch;
 }
 .main-image {
-    flex: 1;
-    width: 100%;
+   width: 100%;
 }
 .footer-container {
     border: 3px solid rgb(25, 196, 107);
-    flex-grow: 1.8;
+    flex-grow: 1.6;
     display: flex;
     flex-direction: column;
     gap: 0.8rem;

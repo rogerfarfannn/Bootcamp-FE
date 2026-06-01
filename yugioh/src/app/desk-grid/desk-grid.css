@@ -1,0 +1,82 @@
+:host{
+    height: 100vh;
+    display: flex;
+    width: 100vw;
+}
+
+.main-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    background-color: rgb(198, 45, 45);
+    flex: 1;
+}
+
+.half{
+    background-color: #1F3A2E;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2.5fr 1fr;
+}
+
+.side-grid{
+    background-color:#1F3A2E;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    
+    gap: 0.3rem;
+    padding: 0.3rem;
+}
+
+.arrow{
+    grid-row-start: 3;
+    background-color: #618F4D;
+}
+.side-item-color{
+    background-color: #3F6B4A;
+}
+.circle{
+    grid-column-start: 2;
+}
+.paper{
+    grid-column-start: 2;
+}
+.cup{
+    grid-column-start: 2;
+}
+.spiral{
+    grid-column-start: 1;
+}
+.paper-left{
+    grid-column-start: 1;
+}
+.cross{
+    grid-column-start: 1;
+}
+
+.main-deck-grid{
+    display: grid;
+    background-color: #1F3A2E;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 0.4rem;
+    padding: 3rem 0.5rem;
+}
+.item-deck{
+    background-color: #4F7A3E;
+    display: flex;
+    align-items: stretch;
+}
+.my-item-deck{
+    transform: rotate(180deg);
+}
+
+.half-rotated {
+    background-color: #1F3A2E;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2.5fr 1fr;
+    transform: rotate(180deg);
+}
