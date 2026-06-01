@@ -7,7 +7,9 @@ export interface Ingredient {
 export interface RecipeModel {
   id: number;
   name: string;
+  isFavorite : boolean;
   description: string;
   imgUrl: string;
   ingredients: Ingredient[];
+
 }

@@ -5,7 +5,13 @@ import { Ingredient, RecipeModel } from '../models';
   selector: 'app-recipe-detail',
   imports: [],
   template: `<div>
-      <p class="recipe-title">{{recipe().name}}</p>
+      <div class="title-cont">
+        <p class="recipe-title">{{recipe().name}}</p>
+        @if (recipe().isFavorite) {
+          <p> ★ </p>
+        }
+      
+      </div>
       <p>{{recipe().description}}</p>
     </div>
     <hr/>
@@ -43,6 +49,11 @@ import { Ingredient, RecipeModel } from '../models';
   .recipe-title{
       font-weight: bold;
       font-size: 1.5rem;
+  }
+  .title-cont{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
   .serving{
     display: flex;
