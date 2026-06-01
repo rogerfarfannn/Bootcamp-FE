@@ -1,30 +1,16 @@
 import { Component, computed, signal } from '@angular/core';
 import { Ingredient, RecipeModel } from "../models";
 import { MOCK_RECIPES } from "../mock-recipes";
+import { RecipeDetail } from '../recipe-detail/recipe-detail';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [],
+  imports: [RecipeDetail],
   template: `
     <button (click)="switchRecipeShown('back')" >Back</button>
     <button (click)="switchRecipeShown('forward')" >Forward</button>
-    <div>
-      <p>Name: {{recipe().name}}</p>
-      <p>Description: {{recipe().description}}</p>
-    </div>
-    <hr/>
-    <div>
-      <p>Servings: {{servings()}}</p>
-    <button (click)="ChangeServings(-1)" >-</button>
-    <button (click)="ChangeServings(1)" >+</button>
-    <p>Image:</p>
-    <img [src]="recipe().imgUrl">
-    </div>
-
-    <!--Module 6-->
-    @for (item of adjustedIngredients(); track $index) {
-      <p>{{item.name}} - {{item.quantity}} - {{item.unit}}</p>
-    }`,
+    <app-recipe-detail [recipe]="recipe()">
+    `,
   styles: ``,
 })
 export class RecipeList {
@@ -50,18 +36,5 @@ export class RecipeList {
     //console.log(this.index);
     this.recipe.set(MOCK_RECIPES[this.index]);
   }
-  //Module 5:
-  servings = signal(1);
-  protected ChangeServings(numb: number) {
-    this.servings.update(prev => {
-      return Math.max(prev + numb, 1);
-    });
-  }
-
-  //Module 6:
-  adjustedIngredients = computed<Ingredient[]>(() =>
-    this.recipe().ingredients.map(y => { return {
-      ...y,
-      quantity : y.quantity* this.servings()
-    } }))
+  
 }
