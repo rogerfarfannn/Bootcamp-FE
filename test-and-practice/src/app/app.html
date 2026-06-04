@@ -2,11 +2,9 @@
   <div class="nav-bar-addition">
 
   </div>
-  <div [class]="isReduced()?'main-grid-reduced':'main-grid'" >
+  <div [class]="isReduced()?'main-grid-reduced':'main-grid'">
     <div class="side-menu">
-      <button  class="reduce-btn" [hidden]="user.role!='admin'"
-      (click)="isReduced.update(x=> !x)"
-      >Reduce</button>
+      <button class="reduce-btn" [hidden]="user.role!='admin'" (click)="isReduced.update(x=> !x)">Reduce</button>
     </div>
 
     <div class="card">
@@ -18,9 +16,31 @@
       </div>
 
       <div class="items-container">
-        <div class="item">1</div>
-        <div class="item">2</div>
-        <div class="item">3</div>
+        <div class="item">
+          <p>Sprint Report: </p>
+          <ul>
+            <li>Completed Tasks: {{completedTasks}} </li>
+            <li>Total Tasks: {{totalTasks}} </li>
+            <li>Progress: {{sprintProgress | percent}} </li>
+          </ul>
+        </div>
+        <div class="item">
+          <p>Person Occupancy: </p>
+          <div class="progress">
+            <div class="progress-fill" [style.width]="occupancy | percent"></div>
+          </div>
+          <p>{{ occupancy | percent}}</p>
+        </div>
+        <div class="item">
+          <p>
+            Storage Use:
+          </p>
+          <ul>
+            <li>Total Storage: {{totalStorage}} </li>
+            <li>Storage Occupied: {{occupiedStorage}} </li>
+            <li>Storage Use: {{storageUse | percent}} </li>
+          </ul>
+        </div>
         <div class="item">4 </div>
       </div>
     </div>
