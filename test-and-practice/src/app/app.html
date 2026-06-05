@@ -25,20 +25,24 @@
           </ul>
         </div>
         <div class="item">
-          <p>Person Occupancy: </p>
+          <p>Profile Progress: ({{currentStep()}}/{{totalSteps}}) </p>
           <div class="progress">
-            <div class="progress-fill" [style.width]="occupancy | percent"></div>
+            <div class="progress-fill" [style.width]="profileProgress() | percent"></div>
           </div>
-          <p>{{ occupancy | percent}}</p>
+          <p>{{ profileProgress() | percent}}</p>
+          <div>
+          <button (click)="updateCurrentStep(-1)">Previous</button>
+          <button (click)="updateCurrentStep(1)">Next</button>
+          </div>
         </div>
         <div class="item">
           <p>
             Storage Use:
           </p>
           <ul>
-            <li>Total Storage: {{totalStorage}} </li>
-            <li>Storage Occupied: {{occupiedStorage}} </li>
-            <li>Storage Use: {{storageUse | percent}} </li>
+            <li>Total Storage: {{totalStorage}} GB</li>
+            <li>Storage Occupied: {{occupiedStorage}} GB </li>
+            <li>Storage Use: {{storageUse | percent:'1.2-3'}} </li>
           </ul>
         </div>
         <div class="item">4 </div>

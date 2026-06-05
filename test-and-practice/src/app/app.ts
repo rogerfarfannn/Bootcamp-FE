@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { User } from './user.model';
 import { PercentPipe } from '@angular/common';
@@ -25,9 +25,15 @@ export class App {
 
 
   totalStorage = 50;
-  occupiedStorage = 32;
+  occupiedStorage = 32.43;
   storageUse = this.occupiedStorage/this.totalStorage;
 
-  occupancy = 0.7;
+
+  currentStep = signal(1);
+  totalSteps = 7;
+  profileProgress = computed(()=> this.currentStep() / this.totalSteps);
+
+
+  updateCurrentStep = (n:number)=> this.currentStep.update((x)=>  x+= n);
 
 }
