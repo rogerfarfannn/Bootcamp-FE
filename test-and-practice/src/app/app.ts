@@ -2,10 +2,11 @@ import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { User } from './user.model';
 import { PercentPipe } from '@angular/common';
+import { AveragePipe } from './shared/pipes/average.pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PercentPipe],
+  imports: [RouterOutlet, PercentPipe, AveragePipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -36,4 +37,7 @@ export class App {
 
   updateCurrentStep = (n:number)=> this.currentStep.update((x)=>  x+= n);
 
+
+
+  example = [1,2,3, 4];
 }

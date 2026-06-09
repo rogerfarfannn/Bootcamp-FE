@@ -24,6 +24,7 @@
             <li>Progress: {{sprintProgress | percent}} </li>
           </ul>
         </div>
+
         <div class="item">
           <p>Profile Progress: ({{currentStep()}}/{{totalSteps}}) </p>
           <div class="progress">
@@ -35,6 +36,7 @@
           <button (click)="updateCurrentStep(1)">Next</button>
           </div>
         </div>
+
         <div class="item">
           <p>
             Storage Use:
@@ -45,7 +47,10 @@
             <li>Storage Use: {{storageUse | percent:'1.2-3'}} </li>
           </ul>
         </div>
-        <div class="item">4 </div>
+        
+        <div class="item"><p>
+          AVG: {{example| average}}
+        </p></div>
       </div>
     </div>
   </div>
