@@ -1,0 +1,30 @@
+<section class="dom-demo">
+  <h2>{{ title() }}</h2>
+
+  <p class="description">
+    Este componente demuestra cómo Angular modifica el DOM cuando cambian los
+    datos del componente.
+  </p>
+
+  <div class="actions">
+    <button type="button" (click)="changeTitle()">
+      Cambiar título
+    </button>
+
+    <button type="button" (click)="addTask()">
+      Agregar tarea
+    </button>
+
+    <button type="button" (click)="resetDemo()">
+      Reiniciar demo
+    </button>
+  </div>
+
+  <h3>Lista renderizada por Angular</h3>
+
+  <ul>
+    @for (task of tasks(); track task.id) {
+      <li>{{ task.name }}</li>
+    }
+  </ul>
+</section>

@@ -1,0 +1,39 @@
+.dom-demo {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid #d0d0d0;
+  border-radius: 12px;
+  background-color: #fafafa;
+}
+
+.description {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+button {
+  padding: 10px 14px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #eeeeee;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+}

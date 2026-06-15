@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Demo</title>
+</head>
+<body>
+
+  <section class="dom-demo">
+
+    <h2 id="title">What is the DOM?</h2>
+
+    <p class="description">
+      This demo shows how JavaScript modifies the DOM when the application state changes.
+    </p>
+
+    <div class="actions">
+      <button id="change-title-btn">
+        Change title
+      </button>
+
+      <button id="add-task-btn">
+        Add task
+      </button>
+
+      <button id="reset-btn">
+        Reset demo
+      </button>
+    </div>
+
+    <h3>List rendered with JavaScript</h3>
+
+    <ul id="task-list"></ul>
+
+  </section>
+
+  <script>
+    let title = 'What is the DOM?';
+
+    let tasks = [
+      { id: 1, name: 'HTML elements become nodes.' },
+      { id: 2, name: 'Nodes are organized in a hierarchical tree.' },
+      { id: 3, name: 'JavaScript can add, update, or remove nodes.' },
+      { id: 4, name: 'Changes in the DOM update the user interface.' }
+    ];
+
+    const titleElement = document.getElementById('title');
+    const taskListElement = document.getElementById('task-list');
+
+    const changeTitleButton = document.getElementById('change-title-btn');
+    const addTaskButton = document.getElementById('add-task-btn');
+    const resetButton = document.getElementById('reset-btn');
+
+    function render() {
+      titleElement.textContent = title;
+
+      taskListElement.innerHTML = '';
+
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.textContent = task.name;
+        taskListElement.appendChild(li);
+      });
+    }
+
+    function changeTitle() {
+      title = 'The DOM has been updated!';
+      render();
+    }
+
+    function addTask() {
+      tasks.push({
+        id: Date.now(),
+        name: `New task ${tasks.length + 1}`
+      });
+
+      render();
+    }
+
+    function resetDemo() {
+      title = 'What is the DOM?';
+
+      tasks = [
+        { id: 1, name: 'HTML elements become nodes.' },
+        { id: 2, name: 'Nodes are organized in a hierarchical tree.' },
+        { id: 3, name: 'JavaScript can add, update, or remove nodes.' },
+        { id: 4, name: 'Changes in the DOM update the user interface.' }
+      ];
+
+      render();
+    }
+
+    changeTitleButton.addEventListener('click', changeTitle);
+    addTaskButton.addEventListener('click', addTask);
+    resetButton.addEventListener('click', resetDemo);
+
+    render();
+  </script>
+
+</body>
+</html>
