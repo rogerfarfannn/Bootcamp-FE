@@ -5,14 +5,16 @@ class MyTarget extends HTMLElement {
         console.log("HOLA")
         var myStyles = new CSSStyleSheet();
         myStyles.replaceSync(`
-            
+                        :host{
+                            display:flex;
+                            flex:1;
+
+                        }
                         
                         .card{
                             display: flex;
                             flex-direction: column;
-                          
-                            flex:1
-                           
+                            flex:1;
                         }
 
                    
