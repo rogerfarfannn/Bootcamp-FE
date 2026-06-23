@@ -72,7 +72,7 @@ class MyTarget extends HTMLElement {
                         <img src="image.png" width="250px">
                         </img>
                     </header>
-                    <main class="body-card">
+                    <main class="body-card" id="my-body">
                         <div>
                             <img src="${url}" width="250px"
                                 class="profile-image">
@@ -87,6 +87,12 @@ class MyTarget extends HTMLElement {
                     </footer>
         </div>
             `;
+    }
+
+    static observedAttributes = ["bg-color"];
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log(name, oldValue, newValue);
+        this.shadowRoot.getElementById("my-body").style.backgroundColor = newValue;
     }
 }
 customElements.define("my-target", MyTarget);

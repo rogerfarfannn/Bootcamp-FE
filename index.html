@@ -11,11 +11,21 @@
 </head>
 
 <body class="main-element">
-   <my-target mysrc = "https://i.pinimg.com/736x/39/98/19/399819aa1c0199d25faea172ef85420e.jpg" >
+   <my-target 
+   id = "my-target"
+   bg-color = "blue"
+   mysrc = "https://i.pinimg.com/736x/39/98/19/399819aa1c0199d25faea172ef85420e.jpg" >
         <p slot="card-name">Son Goku</p>
         <p slot="role">Super Hero</p>
-
    </my-target>
+   <button onclick="changeColor()">
+    Change color
+   </button>
 </body>
-
+<script>
+    const changeColor = ()=>{
+        let myTarget = document.getElementById("my-target");
+        myTarget.setAttribute("bg-color", "red");
+    }
+</script>
 </html>
