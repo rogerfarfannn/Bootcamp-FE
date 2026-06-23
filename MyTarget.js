@@ -1,15 +1,12 @@
 class MyTarget extends HTMLElement {
 
+    #shadow;
     constructor() {
         super();
-        console.log("HOLA")
+        console.log("HOLA");
         var myStyles = new CSSStyleSheet();
         myStyles.replaceSync(`
-                        :host{
-                            display:flex;
-                            flex:1;
-
-                        }
+                        
                         
                         .card{
                             display: flex;
@@ -63,10 +60,10 @@ class MyTarget extends HTMLElement {
         const url = this.getAttribute('mysrc') ??   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNnz8hkS97j80yV1gOH15iEIzQcBgi2Kiejw&s"; 
 
 
-        var shadow = this.attachShadow({ mode: "open" });
-        shadow.adoptedStyleSheets = [myStyles];
+        this.#shadow = this.attachShadow({ mode: "closed" });
+        this.#shadow.adoptedStyleSheets = [myStyles];
 
-        shadow.innerHTML= `
+        this.#shadow.innerHTML= `
                 <div id="card" class="card">
                     <header class="header-card">
                         <img src="image.png" width="250px">
@@ -90,9 +87,10 @@ class MyTarget extends HTMLElement {
     }
 
     static observedAttributes = ["bg-color"];
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(name, oldValue, newValue);
-        this.shadowRoot.getElementById("my-body").style.backgroundColor = newValue;
+    attributeChangedCallback(propertyName, myOldValue, myNewValue) {
+        console.log(propertyName, myOldValue, myNewValue);
+        //this.shadowRoot.getElementById("my-body").style.backgroundColor = myNewValue;
+        this.#shadow.getElementById("my-body").style.backgroundColor = myNewValue;
     }
 }
 customElements.define("my-target", MyTarget);
