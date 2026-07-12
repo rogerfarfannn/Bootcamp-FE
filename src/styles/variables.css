@@ -1,0 +1,13 @@
+:root {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --surface-hover: #2a2a2a;
+
+  --primary: #1dae46;
+  --secondary: #06b6d4;
+
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+
+  --border: #303030;
+}

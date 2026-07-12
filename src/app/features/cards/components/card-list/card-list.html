@@ -1,0 +1,9 @@
+<p>card-list works!</p>
+<div class="card-container">
+    @for (item of cards(); track $index) {
+      <app-card-item></app-card-item>
+    }
+    @empty {
+
+    }
+</div>
