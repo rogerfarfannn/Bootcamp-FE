@@ -1,18 +1,31 @@
 <div class="card-page">
     <header class="page-header">
         <h1 class="page-title">
-            Base de Datos de Cartas
+            Yugioh Cards
         </h1>
 
         <p class="page-description">
-            Explora miles de cartas con metadatos precisos, precios en tiempo real y análisis estratégico para los
-            duelistas
-            más exigentes.
+            Search a lot of cards, you are able to make decks, change things and explore in a free way. Try writting the
+            card you are searching for
         </p>
     </header>
-    <app-searchbox (search)="{}"> </app-searchbox>
-    <app-card-list [cards]="[]"></app-card-list>
-    <app-paginator
-    
-    ></app-paginator>
+    <app-searchbox (search)="letsSearch($event)"> </app-searchbox>
+    @if (isLoading())
+    {
+    <app-loading-spinner></app-loading-spinner>
+
+    }
+    @else if (error())
+    {
+    <div>An error has occurred while loading the data. {{errorMessage()}} </div>
+    }
+    @else {
+    <app-card-list [cards]="cards()?.data || []" [loading]="isLoading()"></app-card-list>
+    <app-paginator [currentPage]="cardsService.page() || 1"
+        [totalPages]="cards()?.meta?.total_pages || 1"
+        (pageChange)="cardsService.page.set($event)"
+        ></app-paginator>
+
+    }
+
 </div>
