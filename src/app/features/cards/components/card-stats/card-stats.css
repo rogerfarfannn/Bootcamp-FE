@@ -1,19 +1,14 @@
 .stats-grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 1rem;
 }
 
 
 .stat-box {
     padding: 1rem;
-
     background: var(--surface);
-
     border: 1px solid var(--border);
-
     border-radius: 8px;
 }
 
@@ -37,5 +32,4 @@
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
 }
