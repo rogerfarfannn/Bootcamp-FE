@@ -106,9 +106,7 @@ ngOnInit() {
     Sets
   </summary>
 
-  @for (set of cardSets(); track set.set_code) {
-    ...
-  }
+  <something>...
 </details>
 ```
 
