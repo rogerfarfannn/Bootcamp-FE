@@ -9,7 +9,7 @@
             card you are searching for
         </p>
     </header>
-    <app-searchbox (search)="letsSearch($event)"> </app-searchbox>
+    <app-searchbox (search)="letsSearch($event)" [searchValue]="cardsService.search()"> </app-searchbox>
     @if (isLoading())
     {
     <app-loading-spinner></app-loading-spinner>
@@ -21,10 +21,9 @@
     }
     @else {
     <app-card-list [cards]="cards()?.data || []" [loading]="isLoading()"></app-card-list>
-    <app-paginator [currentPage]="cardsService.page() || 1"
-        [totalPages]="cards()?.meta?.total_pages || 1"
-        (pageChange)="cardsService.page.set($event)"
-        ></app-paginator>
+
+    <app-paginator [currentPage]="cardsService.page() || 1" [totalPages]="cards()?.meta?.total_pages || 1"
+        (pageChange)="cardsService.page.set($event)"></app-paginator>
 
     }
 
