@@ -18,8 +18,9 @@ import { Location } from '@angular/common';
 export class CardDetail {
   readonly route = inject(ActivatedRoute);
   readonly cardService = inject(CardDetailService);
+  private location = inject(Location);
 
-  readonly card = computed(() =>
+  card = computed(() =>
     this.cardService.card.value()?.data[0]
   );
 
@@ -27,8 +28,6 @@ export class CardDetail {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.cardService.id.set(id);
   }
-
-  private location = inject(Location);
 
   goBack() {
     this.location.back();

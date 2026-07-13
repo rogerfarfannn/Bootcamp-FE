@@ -8,7 +8,7 @@ import { Component, input, output } from '@angular/core';
 })
 export class Searchbox {
   searchValue = input("");
-   search = output<string>();
+  search = output<string>();
 
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;

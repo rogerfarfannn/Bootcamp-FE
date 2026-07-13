@@ -1,6 +1,7 @@
 import { httpResource } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { CardsResponse } from '../../../core/models/CardsResponse';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class CardDetailService {
     }
 
     return {
-      url: 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
+      url: environment.apiUrl,
       params: { id }
     };
   });

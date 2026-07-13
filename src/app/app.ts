@@ -5,7 +5,7 @@ import { CardsPage } from "./features/cards/pages/cards-page/cards-page";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, CardsPage],
+  imports: [RouterOutlet, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
