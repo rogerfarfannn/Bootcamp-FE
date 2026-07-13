@@ -1,0 +1,41 @@
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 1rem;
+}
+
+
+.stat-box {
+    padding: 1rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+}
+
+
+.stat-box span {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+.stat-box strong {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+@media(max-width:900px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

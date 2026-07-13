@@ -1,0 +1,25 @@
+.accordion-sets {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+
+.accordion-sets summary {
+    cursor: pointer;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+
+
+.accordion-sets-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: .8rem 0;
+
+    border-bottom: 1px solid var(--border);
+}

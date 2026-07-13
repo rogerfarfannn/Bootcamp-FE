@@ -1,0 +1,33 @@
+<details class="accordion-price">
+
+    <summary>
+        Precios
+    </summary>
+
+
+    @if (cardPrice(); as price) {
+
+    <div class="price-grid">
+
+        <span>
+            Cardmarket:
+            {{ price.cardmarket_price }}
+        </span>
+
+        <span>
+            TCGPlayer:
+            {{ price.tcgplayer_price }}
+        </span>
+
+        <span>
+            eBay:
+            {{ price.ebay_price }}
+        </span>
+
+    </div>
+
+    } @else {
+    <p>N/A</p>
+    }
+
+</details>

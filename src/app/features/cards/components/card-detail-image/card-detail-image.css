@@ -1,0 +1,23 @@
+
+.card-image-section {
+    flex: 0 0 35%;
+    position: sticky;
+    top: 6rem;
+}
+
+
+.card-image-section img {
+    width: 100%;
+    max-width: 380px;
+
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+@media(max-width:900px) {
+
+    .card-image-section {
+        position: static;
+        text-align: center;
+    }
+}
