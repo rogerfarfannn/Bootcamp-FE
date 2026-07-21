@@ -1,0 +1,40 @@
+<main class="card-detail-page">
+
+    <button class="back-button" (click)="goBack()">
+        <span class="material-symbols-outlined">
+            arrow_back
+        </span>
+        Volver a la lista
+    </button>
+
+
+    @if (card(); as card) {
+
+    <div class="card-detail-layout">
+
+        <app-card-detail-image [url]="card.card_images[0].image_url" [name]="card.name">
+        </app-card-detail-image>
+
+        <section class="card-content">
+
+            <app-card-header [name]="card.name" [description]="card.desc"
+                [type]="card.humanReadableCardType ?? card.type"></app-card-header>
+
+            <app-card-stats [attribute]="card.attribute ?? 'N/A'" [level]="card.level ?? 0" [race]="card.race"
+                [type]="card.type">
+            </app-card-stats>
+
+            @if (card.atk || card.def) {
+            <app-card-combat [atk]="card.atk+''" [def]="card.def+''"></app-card-combat>
+            }
+
+            <app-card-sets [cardSets]="card.card_sets ?? []"></app-card-sets>
+
+            <app-card-prices [cardPrice]="card.card_prices?.[0]" ></app-card-prices>
+         
+        </section>
+
+    </div>
+    }
+
+</main>

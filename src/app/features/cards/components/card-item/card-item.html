@@ -1,0 +1,37 @@
+<a [routerLink]="['/cards', card().id]">
+  <div class="card">
+    <div class="card-container">
+
+      <div class="card-image">
+        <img [src]="card().card_images[0].image_url_small" [alt]="card().name">
+      </div>
+
+      <h3 class="card-title">
+        {{ card().name }}
+      </h3>
+
+      <div class="card-type">
+        {{ card().race }} • {{ card().type }}
+      </div>
+
+      <div class="card-stats">
+        <div class="stat">
+          <span class="material-symbols-outlined filled">
+            star
+          </span>
+          <span>{{ card().level ?? "N/A" }}</span>
+        </div>
+
+        <div class="stat">
+          {{ card().attribute ?? "N/A" }}
+        </div>
+      </div>
+
+      <div class="card-combat">
+        <span>ATK {{ card().atk ?? "N/A"}}</span>
+        <span>DEF {{ card().def ?? "N/A"}}</span>
+      </div>
+
+    </div>
+  </div>
+</a>

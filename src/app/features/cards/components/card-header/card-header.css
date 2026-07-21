@@ -1,0 +1,26 @@
+
+
+.card-header h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
+
+
+.card-header p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: .35rem .8rem;
+
+    background: var(--surface-hover);
+    border: 1px solid var(--border);
+
+    border-radius: 6px;
+
+    color: var(--secondary);
+}

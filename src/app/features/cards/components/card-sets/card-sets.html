@@ -1,0 +1,24 @@
+<details class="accordion-sets">
+
+    <summary>
+        Sets
+    </summary>
+
+    @for (set of cardSets(); track set.set_code) {
+
+    <div class="accordion-sets-item">
+        <strong>
+            {{ set.set_name }}
+        </strong>
+
+        <span>
+            {{ set.set_rarity }} -
+            {{ set.set_price}}
+        </span>
+    </div>
+
+    } @empty {
+    <p>N/A</p>
+    }
+
+</details>

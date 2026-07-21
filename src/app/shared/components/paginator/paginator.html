@@ -1,0 +1,21 @@
+<nav class="paginator">
+
+    <button
+        class="page-btn"
+        [disabled]="currentPage() === 1"
+        (click)="goPreviousPage()">
+        ← Previous
+    </button>
+
+    <span class="page-info">
+        Page {{ currentPage() }} of {{ totalPages() }}
+    </span>
+
+    <button
+        class="page-btn"
+        [disabled]="currentPage === totalPages"
+        (click)="goNextPage()">
+        Next →
+    </button>
+
+</nav>
