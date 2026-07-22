@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardItem } from './card-item';
+import { CardsFavoritePage } from './cards-favorite-page';
 
-describe('CardItem', () => {
-  let component: CardItem;
-  let fixture: ComponentFixture<CardItem>;
+describe('CardsFavoritePage', () => {
+  let component: CardsFavoritePage;
+  let fixture: ComponentFixture<CardsFavoritePage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardItem],
+      imports: [CardsFavoritePage],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CardItem);
+    fixture = TestBed.createComponent(CardsFavoritePage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

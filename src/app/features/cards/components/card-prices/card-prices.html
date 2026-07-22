@@ -1,33 +1,30 @@
-<details class="accordion-price">
+<app-section-accordion sectionName="Prices">
+    <div>
+        @if (cardPrice(); as price) {
 
-    <summary>
-        Precios
-    </summary>
+        <div class="price-grid">
 
+            <span>
+                Cardmarket:
+                {{ price.cardmarket_price }}$
+            </span>
 
-    @if (cardPrice(); as price) {
+            <span>
+                TCGPlayer:
+                {{ price.tcgplayer_price }}$
+            </span>
 
-    <div class="price-grid">
+            <span>
+                eBay:
+                {{ price.ebay_price }}$
+            </span>
 
-        <span>
-            Cardmarket:
-            {{ price.cardmarket_price }}$
-        </span>
+        </div>
 
-        <span>
-            TCGPlayer:
-            {{ price.tcgplayer_price }}$
-        </span>
-
-        <span>
-            eBay:
-            {{ price.ebay_price }}$
-        </span>
+        } @else {
+        <p>N/A</p>
+        }
 
     </div>
 
-    } @else {
-    <p>N/A</p>
-    }
-
-</details>
+</app-section-accordion>

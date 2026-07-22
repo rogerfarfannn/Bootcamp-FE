@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Searchbox } from '../searchbox/searchbox';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-tab-carddetail-nav',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  templateUrl: './tab-carddetail-nav.html',
+  styleUrl: './tab-carddetail-nav.css',
 })
-export class Navbar {}
+export class TabCarddetailNav {}

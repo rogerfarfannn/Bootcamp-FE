@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { CardDetailService } from '../../services/card-detail.service';
 import { CardDetailImage } from "../../components/card-detail-image/card-detail-image";
 import { CardHeader } from "../../components/card-header/card-header";
@@ -8,10 +8,11 @@ import { CardCombat } from '../../components/card-combat/card-combat';
 import { CardSets } from "../../components/card-sets/card-sets";
 import { CardPrices } from "../../components/card-prices/card-prices";
 import { Location } from '@angular/common';
+import { TabCarddetailNav } from "../../components/tab-carddetail-nav/tab-carddetail-nav";
 
 @Component({
   selector: 'app-card-detail',
-  imports: [CardDetailImage, CardHeader, CardStats, CardCombat, CardSets, CardPrices],
+  imports: [CardDetailImage, CardHeader, CardStats, CardCombat, CardSets, CardPrices, RouterOutlet, RouterLinkWithHref, TabCarddetailNav],
   templateUrl: './card-detail.html',
   styleUrl: './card-detail.css',
 })

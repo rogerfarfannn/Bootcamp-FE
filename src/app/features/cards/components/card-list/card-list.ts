@@ -10,5 +10,5 @@ import { Card } from '../../../../core/models/Card';
 })
 export class CardList {
   cards = input.required<Card[]>();
-  loading = input.required<boolean>();
+  loading = input<boolean>(false);
 }

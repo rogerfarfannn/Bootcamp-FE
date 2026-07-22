@@ -1,8 +1,15 @@
-<a [routerLink]="['/cards', card().id]">
+<div>
   <div class="card">
-    <div class="card-container">
+    <button type="button" class="favorite-btn" (click)="cardFavoriteService.changeFavoriteStatus(card())">
+      <span class="material-symbols-outlined" [class.filled]="isFavorite()">
+        favorite
+      </span>
+    </button>
+    
+    <a class="card-container" [routerLink]="['/cards', card().id]">
 
       <div class="card-image">
+
         <img [src]="card().card_images[0].image_url_small" [alt]="card().name">
       </div>
 
@@ -32,6 +39,6 @@
         <span>DEF {{ card().def ?? "N/A"}}</span>
       </div>
 
-    </div>
+    </a>
   </div>
-</a>
+</div>
