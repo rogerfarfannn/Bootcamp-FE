@@ -5,14 +5,12 @@ import { CardDetailImage } from "../../components/card-detail-image/card-detail-
 import { CardHeader } from "../../components/card-header/card-header";
 import { CardStats } from "../../components/card-stats/card-stats";
 import { CardCombat } from '../../components/card-combat/card-combat';
-import { CardSets } from "../../components/card-sets/card-sets";
-import { CardPrices } from "../../components/card-prices/card-prices";
 import { Location } from '@angular/common';
 import { TabCarddetailNav } from "../../components/tab-carddetail-nav/tab-carddetail-nav";
 
 @Component({
   selector: 'app-card-detail',
-  imports: [CardDetailImage, CardHeader, CardStats, CardCombat, CardSets, CardPrices, RouterOutlet, RouterLinkWithHref, TabCarddetailNav],
+  imports: [CardDetailImage, CardHeader, CardStats, CardCombat, RouterOutlet, TabCarddetailNav],
   templateUrl: './card-detail.html',
   styleUrl: './card-detail.css',
 })

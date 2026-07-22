@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { favoritesGuard } from './features/cards/guards/favvorite.guard';
+
+
 
 export const routes: Routes = [
   {
@@ -11,7 +14,8 @@ export const routes: Routes = [
     path: 'cards/favorites',
     loadComponent: () =>
       import('./features/cards/pages/cards-favorite-page/cards-favorite-page')
-        .then(m => m.CardsFavoritePage)
+        .then(m => m.CardsFavoritePage),
+        canActivate: [favoritesGuard]
   },
   {
     path: 'cards/:id',

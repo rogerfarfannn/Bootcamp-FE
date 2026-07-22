@@ -9,7 +9,7 @@ export class CardsFavoriteService {
   favoriteCards = signal<Card[]>(this.getFavoriteCards());
 
   getFavoriteCards  () : Card[] {
-    let cardsString : string | null =  localStorage.getItem(this.#localStorageKey); 
+    const cardsString : string | null =  localStorage.getItem(this.#localStorageKey); 
     console.log(cardsString);
     if(cardsString){
       return JSON.parse(cardsString);
@@ -19,8 +19,9 @@ export class CardsFavoriteService {
 
   changeFavoriteStatus (card : Card){
     this.favoriteCards.update( favCards => {
-      let filteredCards = favCards.filter(x=> x.id != card.id);
-      if(filteredCards.length == favCards.length) {
+      const filteredCards = favCards.filter(x=> x.id != card.id);
+      const wasRemoved = filteredCards.length !== favCards.length
+      if(!wasRemoved) {
         return [...filteredCards, card]
       }
       else{
