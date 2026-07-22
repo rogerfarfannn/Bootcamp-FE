@@ -1,7 +1,13 @@
-.card-container{
+.card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1.8rem;
     justify-content: space-around;
     padding: 1.8rem;
+}
+
+.highlight-card {
+    background-color: rgb(16, 183, 99);
+    padding: 0.8rem;
+    border-radius: 16px;
 }

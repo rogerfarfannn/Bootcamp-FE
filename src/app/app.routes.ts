@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { favoritesGuard } from './features/cards/guards/favvorite.guard';
+import { cardDetailResolverFn } from './features/cards/resolvers/card-detail.resolver';
 
 
 
@@ -15,17 +16,20 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/cards/pages/cards-favorite-page/cards-favorite-page')
         .then(m => m.CardsFavoritePage),
-        canActivate: [favoritesGuard]
+    canActivate: [favoritesGuard]
   },
   {
     path: 'cards/:id',
     loadComponent: () =>
       import('./features/cards/pages/card-detail/card-detail')
         .then(m => m.CardDetail),
+    resolve: { 
+      card: cardDetailResolverFn 
+    },
     children: [{
       path: '',
-      redirectTo: 'sets', // <-- Redirige automáticamente cuando la ruta sea solo /cards/:id
-      pathMatch: 'full'   // <-- Crucial para que coincida exactamente con el path vacío
+      redirectTo: 'sets',
+      pathMatch: 'full'
     },
     {
       path: 'sets',

@@ -21,6 +21,10 @@
     transition: .25s ease;
 }
 
+.highlight-card {
+background-color: red;
+}
+
 .card-container:hover {
     transform: translateY(-4px);
     transform: scale(19px);
