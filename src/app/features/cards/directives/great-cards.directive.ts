@@ -10,11 +10,10 @@ export class GreatCardsDirective implements OnInit {
   readonly #renderer = inject(Renderer2);
 
   readonly card = input.required<Card>();
-
+  readonly range = 1000;
    ngOnInit(): void {
     const atk = this.card().atk;
-    if(atk !== undefined && atk > 1000){
-      console.log("HOLAAA")
+    if(atk !== undefined && atk > this.range){
         this.#renderer.addClass(
           this.#element.nativeElement,
           'highlight-card'

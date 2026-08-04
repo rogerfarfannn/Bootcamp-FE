@@ -10,7 +10,6 @@ export class CardsFavoriteService {
 
   getFavoriteCards  () : Card[] {
     const cardsString : string | null =  localStorage.getItem(this.#localStorageKey); 
-    console.log(cardsString);
     if(cardsString){
       return JSON.parse(cardsString);
     }
