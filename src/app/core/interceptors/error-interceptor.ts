@@ -1,13 +1,30 @@
 import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
+import { mapHttpError } from "../mappers/api-error.mapper";
+import Swal from "sweetalert2";
 
-export const errorInterceptor: HttpInterceptorFn = (req, next) =>
-  next(req).pipe(
+export const errorInterceptor : HttpInterceptorFn = (req, next) => {
+
+  return next(req).pipe(
+
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 0) {
-        return throwError(() => new Error('Unable to connect to the server.'));
-      }
 
-      return throwError(() => error);
+      const apiError = mapHttpError(error);
+
+      Swal.fire({
+        icon: 'error',
+        title: "Error",
+        text: apiError.friendlyMessage,
+        customClass: {
+          confirmButton: 'custom-alert-button',
+        },
+        theme: 'dark',
+      });
+
+      return throwError(() => apiError);
+
     })
+
   );
+
+};

@@ -1,22 +1,23 @@
 <app-section-accordion sectionName="Prices">
     <div>
         @if (cardPrice(); as price) {
-
+        <span>Cheapest price: {{price | cheapestPrice}} </span>
+        <hr>
         <div class="price-grid">
 
             <span>
                 Cardmarket:
-                {{ price.cardmarket_price }}$
+                ${{ price.cardmarket_price }}
             </span>
 
             <span>
                 TCGPlayer:
-                {{ price.tcgplayer_price }}$
+                ${{ price.tcgplayer_price }}
             </span>
 
             <span>
                 eBay:
-                {{ price.ebay_price }}$
+                ${{ price.ebay_price }}
             </span>
 
         </div>

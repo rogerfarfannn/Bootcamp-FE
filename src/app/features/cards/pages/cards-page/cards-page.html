@@ -15,9 +15,12 @@
     <app-loading-spinner></app-loading-spinner>
 
     }
-    @else if (error())
+    @else if (apiError())
     {
-    <div>An error has occurred while loading the data. {{errorMessage()}} </div>
+    <hr/>
+
+    <!--<div>An error has occurred while loading the data. {{errorMessage()}} </div> -->
+    <div>An error has occurred while loading the data. {{apiError()?.resolution}} </div> 
     }
     @else {
     <app-card-list [cards]="cards()?.data || []" [loading]="isLoading()"></app-card-list>

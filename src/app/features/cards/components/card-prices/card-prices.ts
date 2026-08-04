@@ -1,10 +1,11 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { SectionAccordion } from "../section-accordion/section-accordion";
 import { CardDetailService } from '../../services/card-detail.service';
+import { CheapestPricePipe } from '../../pipes/cheapest-price.pipe';
 
 @Component({
   selector: 'app-card-prices',
-  imports: [SectionAccordion],
+  imports: [SectionAccordion, CheapestPricePipe],
   templateUrl: './card-prices.html',
   styleUrl: './card-prices.css',
 })

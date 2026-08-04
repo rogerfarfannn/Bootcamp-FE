@@ -1,7 +1,7 @@
 import { inject } from "@angular/core";
 import { ActivatedRouteSnapshot, ResolveFn, Router, RouterStateSnapshot } from "@angular/router";
 import { CardDetailService } from "../services/card-detail.service";
-import { catchError } from "rxjs";
+import { catchError, EMPTY } from "rxjs";
 import Swal from "sweetalert2";
 
 export const cardDetailResolverFn: ResolveFn<unknown> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
@@ -11,7 +11,9 @@ export const cardDetailResolverFn: ResolveFn<unknown> = (route: ActivatedRouteSn
     cardDetailService.id.set(id);
     
     return cardDetailService.getCard(id).pipe(
-        catchError(err => {
+        /**
+         * 
+         *  catchError(err => {
             Swal.fire({
                         icon: 'error',
                         title: 'Card Was not Found',
@@ -22,6 +24,13 @@ export const cardDetailResolverFn: ResolveFn<unknown> = (route: ActivatedRouteSn
                         theme: "dark"
                     });
                     return router.navigate(['/']);
+        })
+         */
+        catchError(err => {
+            if(err.status === 400){
+                    return router.navigate(['/']);
+            }
+            return EMPTY;
         })
     );
 }

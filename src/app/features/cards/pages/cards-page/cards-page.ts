@@ -5,6 +5,7 @@ import { Paginator } from "../../../../shared/components/paginator/paginator";
 import { CardsService } from '../../services/cards.service';
 import { LoadingSpinner } from "../../../../shared/components/loading-spinner/loading-spinner";
 import { HttpErrorResponse } from '@angular/common/http';
+import { ApiError } from '../../../../core/models/ApiError';
 
 @Component({
   selector: 'app-cards-page',
@@ -23,7 +24,7 @@ export class CardsPage {
     this.cardsService.search.set(value);
     this.cardsService.page.set(1)
   }
-
+  /*
   errorMessage = computed(() => {
     const err = this.error();
 
@@ -33,4 +34,7 @@ export class CardsPage {
 
     return 'Unknown error';
   });
+  */
+
+  readonly apiError = computed(() => this.error() as ApiError | null);
 }
