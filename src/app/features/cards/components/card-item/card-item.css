@@ -64,6 +64,33 @@ background-color: red;
     transition: transform .2s ease, background-color .2s ease, color .2s ease;
 }
 
+
+.select-btn {
+    position: absolute;
+    top: 8px;
+    right: 54px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+     background: var(--surface, #ffffff);
+
+    color: #ffffff;
+
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+
 .favorite-btn .material-symbols-outlined {
     font-size: 1.25rem;
     color: var(--primary);

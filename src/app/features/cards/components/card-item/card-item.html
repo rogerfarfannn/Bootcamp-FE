@@ -5,6 +5,12 @@
         favorite
       </span>
     </button>
+
+    <button type="button" class="select-btn" (click)="cardSelectionService.selectCard(card())">
+      <span class="material-symbols-outlined" [class.filled]="cardSelectionService.isSelected(card().id)">
+         push_pin
+      </span>
+    </button>
     
     <a class="card-container" [routerLink]="['/cards', card().id]">
 

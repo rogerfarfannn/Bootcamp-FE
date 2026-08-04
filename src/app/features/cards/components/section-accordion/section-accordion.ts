@@ -1,11 +1,13 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-section-accordion',
-  imports: [],
+  imports: [LoadingSpinner],
   templateUrl: './section-accordion.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './section-accordion.css',
 })
 export class SectionAccordion {
-  sectionName = input("Section");
+  sectionName = input('Section');
 }
