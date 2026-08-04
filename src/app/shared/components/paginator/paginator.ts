@@ -1,13 +1,13 @@
-import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
   imports: [],
   templateUrl: './paginator.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './paginator.css',
 })
 export class Paginator {
+
   currentPage = input(1);
   totalPages = input(1);
 

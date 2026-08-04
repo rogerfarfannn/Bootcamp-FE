@@ -1,20 +1,24 @@
-<app-section-accordion sectionName="Card Set">
-    <div>
-        @for (set of cardSets(); track set.set_code) {
+<details class="accordion-sets">
 
-        <div class="accordion-item">
-            <strong>
-                {{ set.set_name }}
-            </strong>
+    <summary>
+        Sets
+    </summary>
 
-            <span>
-                {{ set.set_rarity }} -
-                {{ set.set_price}}
-            </span>
-        </div>
+    @for (set of cardSets(); track set.set_code) {
 
-        } @empty {
-        <p>N/A</p>
-        }
+    <div class="accordion-sets-item">
+        <strong>
+            {{ set.set_name }}
+        </strong>
+
+        <span>
+            {{ set.set_rarity }} -
+            {{ set.set_price}}
+        </span>
     </div>
-</app-section-accordion>
+
+    } @empty {
+    <p>N/A</p>
+    }
+
+</details>

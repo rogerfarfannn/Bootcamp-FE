@@ -1,21 +1,8 @@
-<div>
+<a [routerLink]="['/cards', card().id]">
   <div class="card">
-    <button type="button" class="favorite-btn" (click)="cardFavoriteService.changeFavoriteStatus(card())">
-      <span class="material-symbols-outlined" [class.filled]="isFavorite()">
-        favorite
-      </span>
-    </button>
-
-    <button type="button" class="select-btn" (click)="cardSelectionService.selectCard(card())">
-      <span class="material-symbols-outlined" [class.filled]="cardSelectionService.isSelected(card().id)">
-         push_pin
-      </span>
-    </button>
-    
-    <a class="card-container" [routerLink]="['/cards', card().id]">
+    <div class="card-container">
 
       <div class="card-image">
-
         <img [src]="card().card_images[0].image_url_small" [alt]="card().name">
       </div>
 
@@ -45,6 +32,6 @@
         <span>DEF {{ card().def ?? "N/A"}}</span>
       </div>
 
-    </a>
+    </div>
   </div>
-</div>
+</a>

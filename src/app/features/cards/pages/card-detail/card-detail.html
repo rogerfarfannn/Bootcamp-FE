@@ -12,7 +12,8 @@
 
     <div class="card-detail-layout">
 
-        <app-card-detail-image [url]="card.card_images[0].image_url" [name]="card.name"></app-card-detail-image>
+        <app-card-detail-image [url]="card.card_images[0].image_url" [name]="card.name">
+        </app-card-detail-image>
 
         <section class="card-content">
 
@@ -27,11 +28,13 @@
             <app-card-combat [atk]="card.atk+''" [def]="card.def+''"></app-card-combat>
             }
 
-            <app-tab-carddetail-nav></app-tab-carddetail-nav>
+            <app-card-sets [cardSets]="card.card_sets ?? []"></app-card-sets>
 
-            <router-outlet />
-            
+            <app-card-prices [cardPrice]="card.card_prices?.[0]" ></app-card-prices>
+         
         </section>
+
     </div>
     }
+
 </main>
