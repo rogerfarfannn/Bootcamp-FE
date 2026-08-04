@@ -1,12 +1,19 @@
-import { Component, input } from '@angular/core';
-import { CardPrice } from '../../../../core/models/Card';
+import { Component, computed, inject, input, ChangeDetectionStrategy } from '@angular/core';
+import { SectionAccordion } from '../section-accordion/section-accordion';
+import { CardDetailService } from '../../services/card-detail.service';
+import { CheapestPricePipe } from '../../pipes/cheapest-price.pipe';
 
 @Component({
   selector: 'app-card-prices',
-  imports: [],
+  imports: [SectionAccordion, CheapestPricePipe],
   templateUrl: './card-prices.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-prices.css',
 })
 export class CardPrices {
-  cardPrice = input<CardPrice>();
+  cardDetailService = inject(CardDetailService);
+
+  cardPrice = computed(() => {
+    return this.cardDetailService.card.value()?.data[0]?.card_prices?.[0];
+  });
 }

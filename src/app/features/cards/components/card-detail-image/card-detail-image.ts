@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-card-detail-image',
   imports: [],
   templateUrl: './card-detail-image.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-detail-image.css',
 })
 export class CardDetailImage {

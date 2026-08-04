@@ -10,3 +10,11 @@ html, body{
 a {
     text-decoration: none;
 }
+
+.custom-alert-background{
+    background-color: var(--surface);
+    color: wheat;
+}
+.custom-alert-button{
+    background-color: var(--primary);
+}

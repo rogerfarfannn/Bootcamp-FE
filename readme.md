@@ -138,3 +138,186 @@ export class CardsService {
 ```
 
 This keeps the application state centralized, reactive, and synchronized across the different components.
+
+### CHALLENGE 2 
+
+## HU-001:
+"Como duelista, quiero que cada carta y el catálogo tengan una URL propia a la que pueda volver o compartir, para 
+no perder mi lugar al refrescar la página o enviarle un enlace a alguien. "
+
+Para resolver esta HU, se configuraron las rutas en el archivo app.routes.ts, teniendo una para la vista de una 
+carta individual (recibiendo su ID), de esa forma, se permite que cada una de las cartas disponibles, tengan 
+su propia página
+
+
+export const routes: Routes = [
+  {
+    path: 'cards',
+    loadComponent: () =>
+      import('./features/cards/pages/cards-page/cards-page')
+        .then(m => m.CardsPage)
+  },
+  {
+    path: 'cards/favorites',
+    loadComponent: () =>
+      import('./features/cards/pages/cards-favorite-page/cards-favorite-page')
+        .then(m => m.CardsFavoritePage),
+    canActivate: [favoritesGuard]
+  },
+  {
+    path: 'cards/:id',
+    loadComponent: () =>
+      import('./features/cards/pages/card-detail/card-detail')
+        .then(m => m.CardDetail),
+    resolve: { 
+      card: cardDetailResolverFn 
+    },
+    children: [....]
+  },
+  {
+    path: '',
+    redirectTo: 'cards',
+    pathMatch: 'full'
+  },
+
+];
+
+## HU-002: Explorar secciones del detalle como sub-vistas
+"Como duelista, quiero moverme entre las distintas secciones de información de una carta (efecto, estadísticas, precio 
+de referencia) sin salir del detalle, para profundizar en la información que me interesa sin perder el contexto de la 
+carta seleccionada." 
+
+Para realizar este HU, se colocaron dos rutas adicionales como hijas de la ruta de vista de detalle.
+
+ {
+    path: 'cards/:id',
+    loadComponent: () =>
+      import('./features/cards/pages/card-detail/card-detail')
+        .then(m => m.CardDetail),
+    resolve: { 
+      card: cardDetailResolverFn 
+    },
+    children: [{
+      path: '',
+      redirectTo: 'sets',
+      pathMatch: 'full'
+    },
+    {
+      path: 'sets',
+      loadComponent: () =>
+        import('./features/cards/components/card-sets/card-sets')
+          .then(m => m.CardSets),
+    }, {
+      path: 'prices',
+      loadComponent: () =>
+        import('./features/cards/components/card-prices/card-prices')
+          .then(m => m.CardPrices),
+    }
+    ]
+  },
+  
+  Como se puede observar, se colocó una ruta con "" para redireccionar automáticamente a una de las subrutas
+  Dentro de la página de card-detail, se tiene: 
+
+    <app-tab-carddetail-nav></app-tab-carddetail-nav>
+      <router-outlet />
+
+  De esa forma, se puede navegar entre los sumbomponentes y subrutas del detalle de la carta
+
+##  HU-03 — Acceder a mi colección personal 
+"Como duelista, quiero tener una sección de 'Mi colección' distinta del catálogo general, para ver únicamente lo que a 
+mí me interesa dentro de la app."
+
+Para esta sección, se creó una nueva página llamada "CardsFavoritePage"
+y un servicio llamado: "CardsFavoriteService".
+
+Se utilizó localStorage para guardar las cartas localmente:
+
+export class CardsFavoriteService {
+  readonly #localStorageKey = "favorite-cards";
+  favoriteCards = signal<Card[]>(this.getFavoriteCards());
+
+  getFavoriteCards  () : Card[] {
+    const cardsString : string | null =  localStorage.getItem(this.#localStorageKey); 
+    ...
+
+Se colocó un *guard* separado en una carpeta de guards el cual verificaba 
+que existan elementos dentro de la lista de favoritos.
+Para mostrar los mensajes de información se utilizó la librería Swal.
+
+export const favoritesGuard: CanActivateFn = () => {
+    const cardsFavoriteService = inject(CardsFavoriteService);
+    const router = inject(Router);
+
+    if (cardsFavoriteService.favoriteCards().length > 0) {
+        return true;
+    } else {
+        Swal.fire(....)
+        return router.navigate(['/']);
+
+    }
+}
+Y dentro de la ruta se colcó el guard:
+ {
+    path: 'cards/favorites',
+   ....,
+    canActivate: [favoritesGuard]
+  },
+  
+##  HU-04 — Abrir el detalle de una carta 
+"Como duelista, quiero que al abrir el detalle de una carta la información ya esté lista para mostrarse, para no ver una 
+pantalla vacía o a medio cargar por una fracción de segundo cada vez que navego."
+
+
+Para resolver esta HU, se utilizó un resolve dentro de la ruta:
+{
+    path: 'cards/:id',
+   ....,
+    resolve: { 
+      card: cardDetailResolverFn 
+    },
+El resolve, fue creado en su carpeta de "resolvers",
+donde se devuelve la card (en forma de observable) y s eutiliza pipe para que en caso de error, retornar a la página principal:
+xport const cardDetailResolverFn: ResolveFn<unknown> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const router = inject(Router);
+    const cardDetailService = inject(CardDetailService);
+    const id = route.paramMap.get('id') ?? "";
+    cardDetailService.id.set(id);
+    
+    return cardDetailService.getCard(id).pipe(
+        catchError(err => {
+            Swal.fire({...
+            router.navigate(["/"])
+dentro de app.config.ts, se añadió   provideRouter(routes, withComponentInputBinding()) para permitir enviar el card como
+input
+
+
+## HU-05 — Identificar cartas destacadas de un vistazo 
+Como duelista, quiero que ciertas cartas se destaquen visualmente según alguna característica relevante (por 
+ejemplo, alto ATK, cierto atributo, o estar marcada como favorita), para identificarlas rápidamente sin tener que leer 
+el detalle de cada una.
+
+Para resolver esto se usó una directiva, la cual recibía una carta como input, y según su ataque
+colocaba o no una clase especial a la carta
+
+
+export class GreatCardsDirective implements OnInit {
+ 
+  readonly #element = inject(ElementRef);
+  readonly #renderer = inject(Renderer2);
+
+  readonly card = input.required<Card>();
+
+   ngOnInit(): void {
+    const atk = this.card().atk;
+    if(atk !== undefined && atk > 1000){
+        this.#renderer.addClass(
+          this.#element.nativeElement,
+          'highlight-card'
+        );
+    }
+  }
+}
+
+Y finalmente, al llamar al componente se lo coloca:
+ <app-card-item [card]="item" appGreatCardsDirective></app-card-item>

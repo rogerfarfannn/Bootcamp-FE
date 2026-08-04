@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-card-header',
   imports: [],
   templateUrl: './card-header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './card-header.css',
 })
 export class CardHeader {

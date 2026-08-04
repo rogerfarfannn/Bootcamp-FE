@@ -1,11 +1,11 @@
 <div class="card-container">
     @for (item of cards(); track item.id) {
-      <app-card-item [card]="item"></app-card-item>
+      <app-card-item [card]="item" appGreatCardsDirective></app-card-item>
     }
     @empty {
       @if (!loading()) 
       {
-       <div>There are not cards with your search params</div>
+       <div>Cards can not be found</div>
       }
     }
 </div>
