@@ -10,21 +10,42 @@
         </p>
     </header>
     <app-searchbox (search)="letsSearch($event)" [searchValue]="cardsService.search()"> </app-searchbox>
-    @if (isLoading())
-    {
-    <app-loading-spinner></app-loading-spinner>
 
-    }
-    @else if (error())
-    {
-    <div>An error has occurred while loading the data. {{errorMessage()}} </div>
-    }
-    @else {
-    <app-card-list [cards]="cards()?.data || []" [loading]="isLoading()"></app-card-list>
+    <div class="cards-layout">
+        <div>
+            <app-card-filters (cardTypeChange)="letsSearchByCardType($event)"
+                (attributeChange)="letsSearchByAttribute($event)"></app-card-filters>
+            <hr>
 
-    <app-paginator [currentPage]="cardsService.page() || 1" [totalPages]="cards()?.meta?.total_pages || 1"
-        (pageChange)="cardsService.page.set($event)"></app-paginator>
+            @if (focusedCard(); as card)
+            {
 
-    }
+            <span> CARD FOCUSED </span>
+            <app-card-item [card]='card'></app-card-item>
+            }
+        </div>
 
+
+        <div class="right">
+            @if (isLoading())
+            {
+            <app-loading-spinner></app-loading-spinner>
+
+            }
+            @else if (apiError())
+            {
+            <hr />
+            <!--<div>An error has occurred while loading the data. {{errorMessage()}} </div> -->
+            <div>An error has occurred while loading the data. {{apiError()?.resolution}} </div>
+            }
+            @else {
+
+            <app-card-list [cards]="cards()?.data || []" [loading]="isLoading()"></app-card-list>
+            <app-paginator [currentPage]="cardsService.page() || 1" [totalPages]="cards()?.meta?.total_pages || 1"
+                (pageChange)="cardsService.page.set($event)"></app-paginator>
+
+
+            }
+        </div>
+    </div>
 </div>

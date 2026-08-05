@@ -39,3 +39,36 @@
         font-size: 1rem;
     }
 }
+
+.cards-layout {
+    display: grid;
+
+    grid-template-columns: 240px 1fr;
+
+    gap: 2rem;
+
+    width: 100%;
+
+    align-items: start;
+}
+
+
+.cards-content {
+    min-width: 0;
+}
+
+
+@media (max-width: 900px) {
+
+    .cards-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

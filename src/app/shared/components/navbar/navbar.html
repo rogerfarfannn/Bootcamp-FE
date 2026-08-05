@@ -4,9 +4,9 @@
       <a class="logo" href="#">Duelist Codex - Yu-Gi-Oh</a>
 
       <div class="nav-links">
-        <a class="active" href="#">Database</a>
+        <a [routerLink]="'cards'" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" >Database</a>
+        <a [routerLink]="'cards/favorites'" [routerLinkActive]="'active'">Favorites</a>
         <a href="#">Decks</a>
-        <a href="#">Collection</a>
         <a href="#">Another category</a>
       </div>
     </div>
